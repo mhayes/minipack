@@ -59,7 +59,8 @@ module Minipack
         # http url
         data = u.read
       end
-      JSON.parse(data)
+      parsed_data = JSON.parse(data)
+      Minipack.configuration.manifest_files_prefix ? parsed_data[Minipack.configuration.manifest_files_prefix.to_s] : parsed_data
     end
 
     # The `manifest_name` method strips of the file extension of the name, because in the
